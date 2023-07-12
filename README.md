@@ -16,7 +16,7 @@ We provide Toys dataset.
 ## Quick Start
 You can run the model with the following code:
 ```
-python runIOCRec.py --dataset toys --embed_size 64 --k_intention 4 
+python runIOCRec.py --dataset toys --eval_mode uni100 --embed_size 64 --k_intention 4 
 ```
 
 
