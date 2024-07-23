@@ -1,7 +1,7 @@
 import codecs
 import copy
 import logging
-import dgl
+# import dgl
 import numpy as np
 import torch
 import os

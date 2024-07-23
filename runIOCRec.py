@@ -38,8 +38,8 @@ if __name__ == '__main__':
     parser.add_argument('--learning_rate', default=1e-3, type=float)
     parser.add_argument('--l2', default=0, type=float, help='l2 normalization')
     parser.add_argument('--patience', default=10, help='early stop patience')
-    parser.add_argument('--seed', default=-1, help='random seed, -1 means no fixed seed')
-    parser.add_argument('--mark', default='', help='log suffix mark')
+    parser.add_argument('--seed', default=2024, type=int, help='random seed, -1 means no fixed seed')
+    parser.add_argument('--mark', default='seed2024', type=str, help='log suffix mark')
     # Evaluation
     parser.add_argument('--split_type', default='valid_and_test', choices=['valid_only', 'valid_and_test'])
     parser.add_argument('--split_mode', default='LS', type=str, help='[LS (leave-one-out), LS_R@0.x, PS (pre-split)]')

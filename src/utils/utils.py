@@ -4,7 +4,7 @@ import datetime
 import random
 from typing import List
 
-import faiss
+# import faiss
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

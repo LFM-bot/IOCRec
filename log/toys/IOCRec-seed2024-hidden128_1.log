@@ -1,0 +1,328 @@
+2024-07-23 15:48:22 INFO     log save at : log\toys\IOCRec-seed2024-hidden128_1.log
+2024-07-23 15:48:22 INFO     model save at: save\IOCRec-toys-seed2024-hidden128-2024-07-23_15-48-22.pth
+2024-07-23 15:48:23 INFO     [1] Model Hyper-Parameter ---------------------
+2024-07-23 15:48:23 INFO     model: IOCRec
+2024-07-23 15:48:23 INFO     model_type: SEQUENTIAL
+2024-07-23 15:48:23 INFO     aug_types: ['crop', 'mask', 'reorder']
+2024-07-23 15:48:23 INFO     crop_ratio: 0.2
+2024-07-23 15:48:23 INFO     mask_ratio: 0.7
+2024-07-23 15:48:23 INFO     reorder_ratio: 0.2
+2024-07-23 15:48:23 INFO     all_hidden: True
+2024-07-23 15:48:23 INFO     tao: 1.0
+2024-07-23 15:48:23 INFO     lamda: 0.1
+2024-07-23 15:48:23 INFO     k_intention: 4
+2024-07-23 15:48:23 INFO     embed_size: 64
+2024-07-23 15:48:23 INFO     ffn_hidden: 128
+2024-07-23 15:48:23 INFO     num_blocks: 3
+2024-07-23 15:48:23 INFO     num_heads: 2
+2024-07-23 15:48:23 INFO     hidden_dropout: 0.5
+2024-07-23 15:48:23 INFO     attn_dropout: 0.5
+2024-07-23 15:48:23 INFO     layer_norm_eps: 1e-12
+2024-07-23 15:48:23 INFO     initializer_range: 0.02
+2024-07-23 15:48:23 INFO     loss_type: CE
+2024-07-23 15:48:23 INFO     [2] Experiment Hyper-Parameter ----------------
+2024-07-23 15:48:23 INFO     [2-1] data hyper-parameter --------------------
+2024-07-23 15:48:23 INFO     dataset: toys
+2024-07-23 15:48:23 INFO     data_aug: True
+2024-07-23 15:48:23 INFO     seq_filter_len: 0
+2024-07-23 15:48:23 INFO     if_filter_target: False
+2024-07-23 15:48:23 INFO     max_len: 50
+2024-07-23 15:48:23 INFO     [2-2] pretraining hyper-parameter -------------
+2024-07-23 15:48:23 INFO     do_pretraining: False
+2024-07-23 15:48:23 INFO     pretraining_task: MISP
+2024-07-23 15:48:23 INFO     pretraining_epoch: 10
+2024-07-23 15:48:23 INFO     pretraining_batch: 512
+2024-07-23 15:48:23 INFO     pretraining_lr: 0.001
+2024-07-23 15:48:23 INFO     pretraining_l2: 0.0
+2024-07-23 15:48:23 INFO     [2-3] training hyper-parameter ----------------
+2024-07-23 15:48:23 INFO     epoch_num: 150
+2024-07-23 15:48:23 INFO     train_batch: 256
+2024-07-23 15:48:23 INFO     learning_rate: 0.001
+2024-07-23 15:48:23 INFO     l2: 0
+2024-07-23 15:48:23 INFO     patience: 10
+2024-07-23 15:48:23 INFO     device: cuda:0
+2024-07-23 15:48:23 INFO     num_worker: 0
+2024-07-23 15:48:23 INFO     seed: 2024
+2024-07-23 15:48:23 INFO     [2-4] evaluation hyper-parameter --------------
+2024-07-23 15:48:23 INFO     split_type: valid_and_test
+2024-07-23 15:48:23 INFO     split_mode: LS
+2024-07-23 15:48:23 INFO     eval_mode: uni100
+2024-07-23 15:48:23 INFO     metric: ['hit', 'ndcg']
+2024-07-23 15:48:23 INFO     k: [5, 10, 20, 50]
+2024-07-23 15:48:23 INFO     valid_metric: hit@10
+2024-07-23 15:48:23 INFO     eval_batch: 256
+2024-07-23 15:48:23 INFO     [2-5] save hyper-parameter --------------------
+2024-07-23 15:48:23 INFO     log_save: log
+2024-07-23 15:48:23 INFO     save: save
+2024-07-23 15:48:23 INFO     model_saved: None
+2024-07-23 15:48:23 INFO     [3] Data Statistic ----------------------------
+2024-07-23 15:48:23 INFO     dataset: toys
+2024-07-23 15:48:23 INFO     user number: 19412
+2024-07-23 15:48:23 INFO     item number: 11925
+2024-07-23 15:48:23 INFO     average seq length: 8.6337
+2024-07-23 15:48:23 INFO     density: 0.0007 sparsity: 0.9993
+2024-07-23 15:48:23 INFO     data after augmentation:
+2024-07-23 15:48:23 INFO     train samples: 109361	eval samples: 19412	test samples: 19412
+2024-07-23 15:48:23 INFO     [1] Model Architecture ------------------------
+2024-07-23 15:48:23 INFO     total parameters: 886912
+2024-07-23 15:48:23 INFO     IOCRec(
+  (cross_entropy): CrossEntropyLoss()
+  (item_embedding): Embedding(11927, 64, padding_idx=0)
+  (position_embedding): Embedding(50, 64)
+  (input_layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+  (input_dropout): Dropout(p=0.5, inplace=False)
+  (local_encoder): Transformer(
+    (encoder_layers): ModuleList(
+      (0-2): 3 x EncoderLayer(
+        (attn_layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+        (pff_layer_norm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+        (self_attention): MultiHeadAttentionLayer(
+          (fc_q): Linear(in_features=64, out_features=64, bias=True)
+          (fc_k): Linear(in_features=64, out_features=64, bias=True)
+          (fc_v): Linear(in_features=64, out_features=64, bias=True)
+          (attn_dropout): Dropout(p=0.5, inplace=False)
+          (fc_o): Linear(in_features=64, out_features=64, bias=True)
+        )
+        (pff): PointWiseFeedForwardLayer(
+          (fc1): Linear(in_features=64, out_features=128, bias=True)
+          (fc2): Linear(in_features=128, out_features=64, bias=True)
+        )
+        (hidden_dropout): Dropout(p=0.5, inplace=False)
+        (pff_out_drop): Dropout(p=0.5, inplace=False)
+      )
+    )
+  )
+  (global_seq_encoder): GlobalSeqEncoder(
+    (dropout): Dropout(p=0.5, inplace=False)
+    (K_linear): Linear(in_features=64, out_features=64, bias=True)
+    (V_linear): Linear(in_features=64, out_features=64, bias=True)
+  )
+  (disentangle_encoder): DisentangleEncoder(
+    (pos_fai): Embedding(50, 64)
+    (W): Linear(in_features=64, out_features=64, bias=True)
+    (layer_norm_1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (layer_norm_2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (layer_norm_3): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (layer_norm_4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (layer_norm_5): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+  )
+  (nce_loss): InfoNCELoss(
+    (criterion): CrossEntropyLoss()
+  )
+)
+2024-07-23 15:48:23 INFO     Start training...
+2024-07-23 15:48:52 INFO     ----------------------------------------------------Epoch 1----------------------------------------------------
+2024-07-23 15:48:52 INFO      Training Time :[29.2 s]	Training Loss = 11.3817
+2024-07-23 15:48:53 INFO     Evaluation Time:[0.9 s]	  Eval Loss   = 9.3952
+2024-07-23 15:48:53 INFO     hit@5:0.0672	hit@10:0.1179	hit@20:0.2103	hit@50:0.3429	ndcg@5:0.0425	ndcg@10:0.0587	ndcg@20:0.0818	ndcg@50:0.1089	
+2024-07-23 15:49:22 INFO     ----------------------------------------------------Epoch 2----------------------------------------------------
+2024-07-23 15:49:22 INFO      Training Time :[28.8 s]	Training Loss = 9.9376
+2024-07-23 15:49:23 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.3173
+2024-07-23 15:49:23 INFO     hit@5:0.1730	hit@10:0.2780	hit@20:0.4106	hit@50:0.4484	ndcg@5:0.1125	ndcg@10:0.1461	ndcg@20:0.1796	ndcg@50:0.1878	
+2024-07-23 15:49:51 INFO     ----------------------------------------------------Epoch 3----------------------------------------------------
+2024-07-23 15:49:51 INFO      Training Time :[28.7 s]	Training Loss = 9.5913
+2024-07-23 15:49:52 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.1957
+2024-07-23 15:49:52 INFO     hit@5:0.2180	hit@10:0.3175	hit@20:0.4423	hit@50:0.4792	ndcg@5:0.1489	ndcg@10:0.1809	ndcg@20:0.2124	ndcg@50:0.2204	
+2024-07-23 15:50:21 INFO     ----------------------------------------------------Epoch 4----------------------------------------------------
+2024-07-23 15:50:21 INFO      Training Time :[28.7 s]	Training Loss = 9.2381
+2024-07-23 15:50:22 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.0312
+2024-07-23 15:50:22 INFO     hit@5:0.2780	hit@10:0.3709	hit@20:0.4875	hit@50:0.5370	ndcg@5:0.1986	ndcg@10:0.2284	ndcg@20:0.2579	ndcg@50:0.2685	
+2024-07-23 15:50:51 INFO     ----------------------------------------------------Epoch 5----------------------------------------------------
+2024-07-23 15:50:51 INFO      Training Time :[28.7 s]	Training Loss = 8.9199
+2024-07-23 15:50:51 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 8.815
+2024-07-23 15:50:51 INFO     hit@5:0.3373	hit@10:0.4327	hit@20:0.5466	hit@50:0.6149	ndcg@5:0.2469	ndcg@10:0.2777	ndcg@20:0.3065	ndcg@50:0.3208	
+2024-07-23 15:51:20 INFO     ----------------------------------------------------Epoch 6----------------------------------------------------
+2024-07-23 15:51:20 INFO      Training Time :[28.7 s]	Training Loss = 8.6195
+2024-07-23 15:51:21 INFO     Evaluation Time:[0.9 s]	  Eval Loss   = 8.6126
+2024-07-23 15:51:21 INFO     hit@5:0.3784	hit@10:0.4783	hit@20:0.5890	hit@50:0.6803	ndcg@5:0.2829	ndcg@10:0.3151	ndcg@20:0.3431	ndcg@50:0.3619	
+2024-07-23 15:51:50 INFO     ----------------------------------------------------Epoch 7----------------------------------------------------
+2024-07-23 15:51:50 INFO      Training Time :[28.7 s]	Training Loss = 8.3430
+2024-07-23 15:51:51 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 8.4723
+2024-07-23 15:51:51 INFO     hit@5:0.4050	hit@10:0.5029	hit@20:0.6131	hit@50:0.7190	ndcg@5:0.3092	ndcg@10:0.3407	ndcg@20:0.3685	ndcg@50:0.3902	
+2024-07-23 15:52:19 INFO     ----------------------------------------------------Epoch 8----------------------------------------------------
+2024-07-23 15:52:19 INFO      Training Time :[28.8 s]	Training Loss = 8.1023
+2024-07-23 15:52:20 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 8.3892
+2024-07-23 15:52:20 INFO     hit@5:0.4177	hit@10:0.5136	hit@20:0.6287	hit@50:0.7476	ndcg@5:0.3222	ndcg@10:0.3532	ndcg@20:0.3822	ndcg@50:0.4065	
+2024-07-23 15:52:49 INFO     ----------------------------------------------------Epoch 9----------------------------------------------------
+2024-07-23 15:52:49 INFO      Training Time :[28.7 s]	Training Loss = 7.9062
+2024-07-23 15:52:50 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 8.3493
+2024-07-23 15:52:50 INFO     hit@5:0.4232	hit@10:0.5221	hit@20:0.6365	hit@50:0.7612	ndcg@5:0.3297	ndcg@10:0.3616	ndcg@20:0.3904	ndcg@50:0.4159	
+2024-07-23 15:53:18 INFO     ----------------------------------------------------Epoch 10----------------------------------------------------
+2024-07-23 15:53:18 INFO      Training Time :[28.7 s]	Training Loss = 7.7173
+2024-07-23 15:53:19 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 8.3813
+2024-07-23 15:53:19 INFO     hit@5:0.4261	hit@10:0.5207	hit@20:0.6405	hit@50:0.7702	ndcg@5:0.3349	ndcg@10:0.3654	ndcg@20:0.3956	ndcg@50:0.4221	
+2024-07-23 15:53:19 INFO     EarlyStopping Counter: 1 out of 10
+2024-07-23 15:53:48 INFO     ----------------------------------------------------Epoch 11----------------------------------------------------
+2024-07-23 15:53:48 INFO      Training Time :[28.6 s]	Training Loss = 7.5710
+2024-07-23 15:53:49 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 8.4269
+2024-07-23 15:53:49 INFO     hit@5:0.4251	hit@10:0.5220	hit@20:0.6401	hit@50:0.7714	ndcg@5:0.3360	ndcg@10:0.3673	ndcg@20:0.3970	ndcg@50:0.4238	
+2024-07-23 15:53:49 INFO     EarlyStopping Counter: 2 out of 10
+2024-07-23 15:54:17 INFO     ----------------------------------------------------Epoch 12----------------------------------------------------
+2024-07-23 15:54:17 INFO      Training Time :[28.7 s]	Training Loss = 7.4491
+2024-07-23 15:54:18 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 8.4943
+2024-07-23 15:54:18 INFO     hit@5:0.4334	hit@10:0.5272	hit@20:0.6495	hit@50:0.7863	ndcg@5:0.3418	ndcg@10:0.3721	ndcg@20:0.4030	ndcg@50:0.4308	
+2024-07-23 15:54:47 INFO     ----------------------------------------------------Epoch 13----------------------------------------------------
+2024-07-23 15:54:47 INFO      Training Time :[28.7 s]	Training Loss = 7.3205
+2024-07-23 15:54:48 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 8.5795
+2024-07-23 15:54:48 INFO     hit@5:0.4349	hit@10:0.5316	hit@20:0.6486	hit@50:0.7801	ndcg@5:0.3445	ndcg@10:0.3757	ndcg@20:0.4052	ndcg@50:0.4320	
+2024-07-23 15:55:17 INFO     ----------------------------------------------------Epoch 14----------------------------------------------------
+2024-07-23 15:55:17 INFO      Training Time :[28.8 s]	Training Loss = 7.2152
+2024-07-23 15:55:17 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 8.6597
+2024-07-23 15:55:17 INFO     hit@5:0.4355	hit@10:0.5331	hit@20:0.6505	hit@50:0.7763	ndcg@5:0.3457	ndcg@10:0.3772	ndcg@20:0.4067	ndcg@50:0.4324	
+2024-07-23 15:55:46 INFO     ----------------------------------------------------Epoch 15----------------------------------------------------
+2024-07-23 15:55:46 INFO      Training Time :[28.7 s]	Training Loss = 7.1577
+2024-07-23 15:55:47 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 8.8389
+2024-07-23 15:55:47 INFO     hit@5:0.4379	hit@10:0.5340	hit@20:0.6505	hit@50:0.7825	ndcg@5:0.3475	ndcg@10:0.3785	ndcg@20:0.4078	ndcg@50:0.4347	
+2024-07-23 15:56:16 INFO     ----------------------------------------------------Epoch 16----------------------------------------------------
+2024-07-23 15:56:16 INFO      Training Time :[28.8 s]	Training Loss = 7.0728
+2024-07-23 15:56:17 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 8.8179
+2024-07-23 15:56:17 INFO     hit@5:0.4402	hit@10:0.5355	hit@20:0.6553	hit@50:0.7779	ndcg@5:0.3498	ndcg@10:0.3804	ndcg@20:0.4106	ndcg@50:0.4356	
+2024-07-23 15:56:45 INFO     ----------------------------------------------------Epoch 17----------------------------------------------------
+2024-07-23 15:56:45 INFO      Training Time :[28.7 s]	Training Loss = 6.9874
+2024-07-23 15:56:46 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 8.9224
+2024-07-23 15:56:46 INFO     hit@5:0.4413	hit@10:0.5369	hit@20:0.6527	hit@50:0.7759	ndcg@5:0.3513	ndcg@10:0.3820	ndcg@20:0.4113	ndcg@50:0.4366	
+2024-07-23 15:57:15 INFO     ----------------------------------------------------Epoch 18----------------------------------------------------
+2024-07-23 15:57:15 INFO      Training Time :[28.7 s]	Training Loss = 6.9453
+2024-07-23 15:57:16 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.0906
+2024-07-23 15:57:16 INFO     hit@5:0.4420	hit@10:0.5394	hit@20:0.6564	hit@50:0.7779	ndcg@5:0.3513	ndcg@10:0.3828	ndcg@20:0.4123	ndcg@50:0.4372	
+2024-07-23 15:57:44 INFO     ----------------------------------------------------Epoch 19----------------------------------------------------
+2024-07-23 15:57:44 INFO      Training Time :[28.7 s]	Training Loss = 6.8912
+2024-07-23 15:57:45 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.1422
+2024-07-23 15:57:45 INFO     hit@5:0.4432	hit@10:0.5395	hit@20:0.6550	hit@50:0.7760	ndcg@5:0.3512	ndcg@10:0.3822	ndcg@20:0.4113	ndcg@50:0.4361	
+2024-07-23 15:58:14 INFO     ----------------------------------------------------Epoch 20----------------------------------------------------
+2024-07-23 15:58:14 INFO      Training Time :[28.7 s]	Training Loss = 6.8496
+2024-07-23 15:58:15 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.1115
+2024-07-23 15:58:15 INFO     hit@5:0.4450	hit@10:0.5403	hit@20:0.6582	hit@50:0.7732	ndcg@5:0.3521	ndcg@10:0.3828	ndcg@20:0.4125	ndcg@50:0.4362	
+2024-07-23 15:58:43 INFO     ----------------------------------------------------Epoch 21----------------------------------------------------
+2024-07-23 15:58:43 INFO      Training Time :[28.7 s]	Training Loss = 6.8105
+2024-07-23 15:58:44 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.2315
+2024-07-23 15:58:44 INFO     hit@5:0.4438	hit@10:0.5401	hit@20:0.6584	hit@50:0.7726	ndcg@5:0.3530	ndcg@10:0.3840	ndcg@20:0.4139	ndcg@50:0.4374	
+2024-07-23 15:58:44 INFO     EarlyStopping Counter: 1 out of 10
+2024-07-23 15:59:13 INFO     ----------------------------------------------------Epoch 22----------------------------------------------------
+2024-07-23 15:59:13 INFO      Training Time :[28.6 s]	Training Loss = 6.7725
+2024-07-23 15:59:14 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.2508
+2024-07-23 15:59:14 INFO     hit@5:0.4409	hit@10:0.5388	hit@20:0.6550	hit@50:0.7719	ndcg@5:0.3515	ndcg@10:0.3831	ndcg@20:0.4124	ndcg@50:0.4365	
+2024-07-23 15:59:14 INFO     EarlyStopping Counter: 2 out of 10
+2024-07-23 15:59:42 INFO     ----------------------------------------------------Epoch 23----------------------------------------------------
+2024-07-23 15:59:42 INFO      Training Time :[28.6 s]	Training Loss = 6.7280
+2024-07-23 15:59:43 INFO     Evaluation Time:[0.9 s]	  Eval Loss   = 9.2759
+2024-07-23 15:59:43 INFO     hit@5:0.4437	hit@10:0.5371	hit@20:0.6561	hit@50:0.7688	ndcg@5:0.3523	ndcg@10:0.3824	ndcg@20:0.4124	ndcg@50:0.4356	
+2024-07-23 15:59:43 INFO     EarlyStopping Counter: 3 out of 10
+2024-07-23 16:00:12 INFO     ----------------------------------------------------Epoch 24----------------------------------------------------
+2024-07-23 16:00:12 INFO      Training Time :[28.6 s]	Training Loss = 6.6999
+2024-07-23 16:00:13 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.2741
+2024-07-23 16:00:13 INFO     hit@5:0.4443	hit@10:0.5407	hit@20:0.6597	hit@50:0.7671	ndcg@5:0.3517	ndcg@10:0.3829	ndcg@20:0.4129	ndcg@50:0.4351	
+2024-07-23 16:00:41 INFO     ----------------------------------------------------Epoch 25----------------------------------------------------
+2024-07-23 16:00:41 INFO      Training Time :[28.7 s]	Training Loss = 6.6658
+2024-07-23 16:00:42 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.3608
+2024-07-23 16:00:42 INFO     hit@5:0.4438	hit@10:0.5410	hit@20:0.6618	hit@50:0.7692	ndcg@5:0.3529	ndcg@10:0.3844	ndcg@20:0.4148	ndcg@50:0.4370	
+2024-07-23 16:01:11 INFO     ----------------------------------------------------Epoch 26----------------------------------------------------
+2024-07-23 16:01:11 INFO      Training Time :[29.0 s]	Training Loss = 6.6469
+2024-07-23 16:01:12 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.312
+2024-07-23 16:01:12 INFO     hit@5:0.4449	hit@10:0.5433	hit@20:0.6603	hit@50:0.7668	ndcg@5:0.3535	ndcg@10:0.3852	ndcg@20:0.4147	ndcg@50:0.4367	
+2024-07-23 16:01:41 INFO     ----------------------------------------------------Epoch 27----------------------------------------------------
+2024-07-23 16:01:41 INFO      Training Time :[29.0 s]	Training Loss = 6.6072
+2024-07-23 16:01:42 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.4332
+2024-07-23 16:01:42 INFO     hit@5:0.4465	hit@10:0.5439	hit@20:0.6594	hit@50:0.7670	ndcg@5:0.3553	ndcg@10:0.3868	ndcg@20:0.4159	ndcg@50:0.4381	
+2024-07-23 16:02:11 INFO     ----------------------------------------------------Epoch 28----------------------------------------------------
+2024-07-23 16:02:11 INFO      Training Time :[28.9 s]	Training Loss = 6.5803
+2024-07-23 16:02:12 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.3869
+2024-07-23 16:02:12 INFO     hit@5:0.4450	hit@10:0.5417	hit@20:0.6589	hit@50:0.7662	ndcg@5:0.3521	ndcg@10:0.3833	ndcg@20:0.4128	ndcg@50:0.4350	
+2024-07-23 16:02:12 INFO     EarlyStopping Counter: 1 out of 10
+2024-07-23 16:02:40 INFO     ----------------------------------------------------Epoch 29----------------------------------------------------
+2024-07-23 16:02:40 INFO      Training Time :[28.7 s]	Training Loss = 6.5381
+2024-07-23 16:02:41 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.4047
+2024-07-23 16:02:41 INFO     hit@5:0.4460	hit@10:0.5444	hit@20:0.6607	hit@50:0.7627	ndcg@5:0.3537	ndcg@10:0.3855	ndcg@20:0.4149	ndcg@50:0.4360	
+2024-07-23 16:03:10 INFO     ----------------------------------------------------Epoch 30----------------------------------------------------
+2024-07-23 16:03:10 INFO      Training Time :[28.8 s]	Training Loss = 6.5330
+2024-07-23 16:03:11 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.4784
+2024-07-23 16:03:11 INFO     hit@5:0.4452	hit@10:0.5418	hit@20:0.6597	hit@50:0.7587	ndcg@5:0.3530	ndcg@10:0.3841	ndcg@20:0.4139	ndcg@50:0.4344	
+2024-07-23 16:03:11 INFO     EarlyStopping Counter: 1 out of 10
+2024-07-23 16:03:40 INFO     ----------------------------------------------------Epoch 31----------------------------------------------------
+2024-07-23 16:03:40 INFO      Training Time :[28.7 s]	Training Loss = 6.5212
+2024-07-23 16:03:40 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.7194
+2024-07-23 16:03:40 INFO     hit@5:0.4427	hit@10:0.5413	hit@20:0.6573	hit@50:0.7688	ndcg@5:0.3514	ndcg@10:0.3833	ndcg@20:0.4125	ndcg@50:0.4355	
+2024-07-23 16:03:40 INFO     EarlyStopping Counter: 2 out of 10
+2024-07-23 16:04:09 INFO     ----------------------------------------------------Epoch 32----------------------------------------------------
+2024-07-23 16:04:09 INFO      Training Time :[28.8 s]	Training Loss = 6.4854
+2024-07-23 16:04:10 INFO     Evaluation Time:[0.9 s]	  Eval Loss   = 9.4205
+2024-07-23 16:04:10 INFO     hit@5:0.4431	hit@10:0.5397	hit@20:0.6589	hit@50:0.7513	ndcg@5:0.3529	ndcg@10:0.3841	ndcg@20:0.4142	ndcg@50:0.4335	
+2024-07-23 16:04:10 INFO     EarlyStopping Counter: 3 out of 10
+2024-07-23 16:04:39 INFO     ----------------------------------------------------Epoch 33----------------------------------------------------
+2024-07-23 16:04:39 INFO      Training Time :[28.8 s]	Training Loss = 6.4737
+2024-07-23 16:04:40 INFO     Evaluation Time:[0.9 s]	  Eval Loss   = 9.5524
+2024-07-23 16:04:40 INFO     hit@5:0.4453	hit@10:0.5432	hit@20:0.6600	hit@50:0.7589	ndcg@5:0.3527	ndcg@10:0.3842	ndcg@20:0.4137	ndcg@50:0.4342	
+2024-07-23 16:04:40 INFO     EarlyStopping Counter: 4 out of 10
+2024-07-23 16:05:08 INFO     ----------------------------------------------------Epoch 34----------------------------------------------------
+2024-07-23 16:05:08 INFO      Training Time :[28.7 s]	Training Loss = 6.4362
+2024-07-23 16:05:09 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.4887
+2024-07-23 16:05:09 INFO     hit@5:0.4471	hit@10:0.5448	hit@20:0.6620	hit@50:0.7581	ndcg@5:0.3549	ndcg@10:0.3865	ndcg@20:0.4160	ndcg@50:0.4359	
+2024-07-23 16:05:38 INFO     ----------------------------------------------------Epoch 35----------------------------------------------------
+2024-07-23 16:05:38 INFO      Training Time :[28.9 s]	Training Loss = 6.4208
+2024-07-23 16:05:39 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.4685
+2024-07-23 16:05:39 INFO     hit@5:0.4458	hit@10:0.5412	hit@20:0.6611	hit@50:0.7532	ndcg@5:0.3514	ndcg@10:0.3822	ndcg@20:0.4125	ndcg@50:0.4316	
+2024-07-23 16:05:39 INFO     EarlyStopping Counter: 1 out of 10
+2024-07-23 16:06:08 INFO     ----------------------------------------------------Epoch 36----------------------------------------------------
+2024-07-23 16:06:08 INFO      Training Time :[28.8 s]	Training Loss = 6.3992
+2024-07-23 16:06:09 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.7069
+2024-07-23 16:06:09 INFO     hit@5:0.4427	hit@10:0.5407	hit@20:0.6590	hit@50:0.7582	ndcg@5:0.3515	ndcg@10:0.3832	ndcg@20:0.4130	ndcg@50:0.4336	
+2024-07-23 16:06:09 INFO     EarlyStopping Counter: 2 out of 10
+2024-07-23 16:06:38 INFO     ----------------------------------------------------Epoch 37----------------------------------------------------
+2024-07-23 16:06:38 INFO      Training Time :[28.9 s]	Training Loss = 6.3591
+2024-07-23 16:06:38 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.6517
+2024-07-23 16:06:38 INFO     hit@5:0.4489	hit@10:0.5471	hit@20:0.6606	hit@50:0.7557	ndcg@5:0.3543	ndcg@10:0.3859	ndcg@20:0.4145	ndcg@50:0.4343	
+2024-07-23 16:07:07 INFO     ----------------------------------------------------Epoch 38----------------------------------------------------
+2024-07-23 16:07:07 INFO      Training Time :[28.8 s]	Training Loss = 6.3891
+2024-07-23 16:07:08 INFO     Evaluation Time:[0.9 s]	  Eval Loss   = 9.5743
+2024-07-23 16:07:08 INFO     hit@5:0.4460	hit@10:0.5470	hit@20:0.6614	hit@50:0.7520	ndcg@5:0.3527	ndcg@10:0.3853	ndcg@20:0.4141	ndcg@50:0.4330	
+2024-07-23 16:07:08 INFO     EarlyStopping Counter: 1 out of 10
+2024-07-23 16:07:37 INFO     ----------------------------------------------------Epoch 39----------------------------------------------------
+2024-07-23 16:07:37 INFO      Training Time :[28.7 s]	Training Loss = 6.3448
+2024-07-23 16:07:38 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.6103
+2024-07-23 16:07:38 INFO     hit@5:0.4431	hit@10:0.5423	hit@20:0.6616	hit@50:0.7517	ndcg@5:0.3510	ndcg@10:0.3830	ndcg@20:0.4131	ndcg@50:0.4318	
+2024-07-23 16:07:38 INFO     EarlyStopping Counter: 2 out of 10
+2024-07-23 16:08:06 INFO     ----------------------------------------------------Epoch 40----------------------------------------------------
+2024-07-23 16:08:06 INFO      Training Time :[28.7 s]	Training Loss = 6.3131
+2024-07-23 16:08:07 INFO     Evaluation Time:[0.9 s]	  Eval Loss   = 9.6582
+2024-07-23 16:08:07 INFO     hit@5:0.4436	hit@10:0.5418	hit@20:0.6578	hit@50:0.7486	ndcg@5:0.3531	ndcg@10:0.3849	ndcg@20:0.4142	ndcg@50:0.4331	
+2024-07-23 16:08:07 INFO     EarlyStopping Counter: 3 out of 10
+2024-07-23 16:08:36 INFO     ----------------------------------------------------Epoch 41----------------------------------------------------
+2024-07-23 16:08:36 INFO      Training Time :[28.8 s]	Training Loss = 6.2971
+2024-07-23 16:08:37 INFO     Evaluation Time:[0.9 s]	  Eval Loss   = 9.715
+2024-07-23 16:08:37 INFO     hit@5:0.4395	hit@10:0.5395	hit@20:0.6592	hit@50:0.7466	ndcg@5:0.3491	ndcg@10:0.3813	ndcg@20:0.4115	ndcg@50:0.4297	
+2024-07-23 16:08:37 INFO     EarlyStopping Counter: 4 out of 10
+2024-07-23 16:09:06 INFO     ----------------------------------------------------Epoch 42----------------------------------------------------
+2024-07-23 16:09:06 INFO      Training Time :[28.7 s]	Training Loss = 6.2833
+2024-07-23 16:09:06 INFO     Evaluation Time:[0.9 s]	  Eval Loss   = 9.7391
+2024-07-23 16:09:06 INFO     hit@5:0.4448	hit@10:0.5445	hit@20:0.6613	hit@50:0.7528	ndcg@5:0.3525	ndcg@10:0.3847	ndcg@20:0.4142	ndcg@50:0.4332	
+2024-07-23 16:09:06 INFO     EarlyStopping Counter: 5 out of 10
+2024-07-23 16:09:35 INFO     ----------------------------------------------------Epoch 43----------------------------------------------------
+2024-07-23 16:09:35 INFO      Training Time :[28.8 s]	Training Loss = 6.2645
+2024-07-23 16:09:36 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.7978
+2024-07-23 16:09:36 INFO     hit@5:0.4412	hit@10:0.5433	hit@20:0.6604	hit@50:0.7482	ndcg@5:0.3488	ndcg@10:0.3818	ndcg@20:0.4113	ndcg@50:0.4296	
+2024-07-23 16:09:36 INFO     EarlyStopping Counter: 6 out of 10
+2024-07-23 16:10:05 INFO     ----------------------------------------------------Epoch 44----------------------------------------------------
+2024-07-23 16:10:05 INFO      Training Time :[28.8 s]	Training Loss = 6.2339
+2024-07-23 16:10:06 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.6719
+2024-07-23 16:10:06 INFO     hit@5:0.4426	hit@10:0.5433	hit@20:0.6594	hit@50:0.7487	ndcg@5:0.3508	ndcg@10:0.3833	ndcg@20:0.4126	ndcg@50:0.4312	
+2024-07-23 16:10:06 INFO     EarlyStopping Counter: 7 out of 10
+2024-07-23 16:10:34 INFO     ----------------------------------------------------Epoch 45----------------------------------------------------
+2024-07-23 16:10:34 INFO      Training Time :[28.7 s]	Training Loss = 6.2278
+2024-07-23 16:10:35 INFO     Evaluation Time:[0.9 s]	  Eval Loss   = 9.6979
+2024-07-23 16:10:35 INFO     hit@5:0.4421	hit@10:0.5440	hit@20:0.6596	hit@50:0.7474	ndcg@5:0.3507	ndcg@10:0.3836	ndcg@20:0.4127	ndcg@50:0.4311	
+2024-07-23 16:10:35 INFO     EarlyStopping Counter: 8 out of 10
+2024-07-23 16:11:04 INFO     ----------------------------------------------------Epoch 46----------------------------------------------------
+2024-07-23 16:11:04 INFO      Training Time :[28.8 s]	Training Loss = 6.2067
+2024-07-23 16:11:05 INFO     Evaluation Time:[0.8 s]	  Eval Loss   = 9.7336
+2024-07-23 16:11:05 INFO     hit@5:0.4385	hit@10:0.5419	hit@20:0.6572	hit@50:0.7429	ndcg@5:0.3483	ndcg@10:0.3817	ndcg@20:0.4109	ndcg@50:0.4288	
+2024-07-23 16:11:05 INFO     EarlyStopping Counter: 9 out of 10
+2024-07-23 16:11:34 INFO     ----------------------------------------------------Epoch 47----------------------------------------------------
+2024-07-23 16:11:34 INFO      Training Time :[28.7 s]	Training Loss = 6.1966
+2024-07-23 16:11:34 INFO     Evaluation Time:[0.9 s]	  Eval Loss   = 9.7967
+2024-07-23 16:11:34 INFO     hit@5:0.4428	hit@10:0.5439	hit@20:0.6606	hit@50:0.7450	ndcg@5:0.3503	ndcg@10:0.3830	ndcg@20:0.4124	ndcg@50:0.4300	
+2024-07-23 16:11:34 INFO     EarlyStopping Counter: 10 out of 10
+2024-07-23 16:11:34 INFO     ------------------------------------------------Best Evaluation------------------------------------------------
+2024-07-23 16:11:34 INFO     Best Result at Epoch: 37	 Early Stop at Patience: 10
+2024-07-23 16:11:34 INFO     hit@5:0.4489	hit@10:0.5471	hit@20:0.6606	hit@50:0.7557	ndcg@5:0.3543	ndcg@10:0.3859	ndcg@20:0.4145	ndcg@50:0.4343	
+2024-07-23 16:11:35 INFO     -----------------------------------------------------Test Results------------------------------------------------------
+2024-07-23 16:11:35 INFO     hit@5:0.3998	hit@10:0.4974	hit@20:0.6206	hit@50:0.7235	ndcg@5:0.3130	ndcg@10:0.3444	ndcg@20:0.3753	ndcg@50:0.3967	
